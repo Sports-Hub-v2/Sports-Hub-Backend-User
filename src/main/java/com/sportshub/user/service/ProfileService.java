@@ -3,6 +3,8 @@ package com.sportshub.user.service;
 import com.sportshub.user.domain.Profile;
 import com.sportshub.user.repository.ProfileRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,5 +48,10 @@ public class ProfileService {
         if (patch.getActivityStartDate() != null) p.setActivityStartDate(patch.getActivityStartDate());
         if (patch.getActivityEndDate() != null) p.setActivityEndDate(patch.getActivityEndDate());
         return profileRepository.save(p);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<Profile> findAll(Pageable pageable) {
+        return profileRepository.findAll(pageable);
     }
 }
