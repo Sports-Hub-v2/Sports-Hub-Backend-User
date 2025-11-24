@@ -1,5 +1,6 @@
 package com.sportshub.user.web;
 
+import com.sportshub.user.client.AuthServiceClient;
 import com.sportshub.user.domain.Profile;
 import com.sportshub.user.service.ProfileService;
 import com.sportshub.user.web.dto.ProfileDtos.CreateRequest;
@@ -22,6 +23,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProfileController {
     private final ProfileService profileService;
+    private final AuthServiceClient authServiceClient;
 
     @PostMapping("/profiles")
     @ResponseStatus(HttpStatus.CREATED)
@@ -64,6 +66,11 @@ public class ProfileController {
     private Response toResponse(Profile p) {
         Response r = new Response();
         BeanUtils.copyProperties(p, r);
+        // Fetch email from auth service
+        if (p.getAccountId() != null) {
+            String email = authServiceClient.getAccountEmail(p.getAccountId());
+            r.setEmail(email);
+        }
         return r;
     }
 }

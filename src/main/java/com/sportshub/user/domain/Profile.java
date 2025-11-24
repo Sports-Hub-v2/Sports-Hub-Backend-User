@@ -42,6 +42,21 @@ public class Profile {
     @Column(name = "birth_date")
     private LocalDate birthDate;
 
+    // 신체 정보
+    private Integer height; // cm 단위
+    private Integer weight; // kg 단위
+
+    // 조기축구 특화 정보
+    @Column(name = "manner_score")
+    private Double mannerScore = 36.5; // 기본 매너온도 36.5도
+
+    @Column(name = "no_show_count")
+    private Integer noShowCount = 0; // 노쇼 횟수
+
+    @Column(name = "consecutive_attendance")
+    private Integer consecutiveAttendance = 0; // 연속 출석
+
+    // 활동 기간
     @Column(name = "activity_start_date")
     private LocalDate activityStartDate;
 

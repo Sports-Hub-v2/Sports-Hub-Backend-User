@@ -16,3 +16,8 @@ spring:
 logging:
   level:
     org.flywaydb: DEBUG
+
+# Auth service configuration for inter-service communication
+auth:
+  service:
+    url: ${AUTH_SERVICE_URL:http://sportshub-auth:8080}

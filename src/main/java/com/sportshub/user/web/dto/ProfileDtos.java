@@ -13,12 +13,14 @@ public class ProfileDtos {
         private Long accountId;
         private String name;
         private String region;
-        private String subRegion;  // 추가
+        private String subRegion;
         private String preferredPosition;
-        private String skillLevel;  // 추가
-        private Boolean isExPlayer;  // String → Boolean 변경
+        private String skillLevel;
+        private Boolean isExPlayer;
         private String phoneNumber;
         private LocalDate birthDate;
+        private Integer height; // 신체 정보
+        private Integer weight;
         private LocalDate activityStartDate;
         private LocalDate activityEndDate;
     }
@@ -27,14 +29,20 @@ public class ProfileDtos {
     public static class Response {
         private Long id;
         private Long accountId;
+        private String email; // Account 이메일 (auth 서비스에서 조회)
         private String name;
         private String region;
-        private String subRegion;  // 추가
+        private String subRegion;
         private String preferredPosition;
-        private String skillLevel;  // 추가
-        private Boolean isExPlayer;  // String → Boolean 변경
+        private String skillLevel;
+        private Boolean isExPlayer;
         private String phoneNumber;
         private LocalDate birthDate;
+        private Integer height;
+        private Integer weight;
+        private Double mannerScore;
+        private Integer noShowCount;
+        private Integer consecutiveAttendance;
         private LocalDate activityStartDate;
         private LocalDate activityEndDate;
         private LocalDateTime createdAt;
@@ -45,12 +53,14 @@ public class ProfileDtos {
     public static class UpdateRequest {
         private String name;
         private String region;
-        private String subRegion;  // 추가
+        private String subRegion;
         private String preferredPosition;
-        private String skillLevel;  // 추가
-        private Boolean isExPlayer;  // String → Boolean 변경
+        private String skillLevel;
+        private Boolean isExPlayer;
         private String phoneNumber;
         private LocalDate birthDate;
+        private Integer height;
+        private Integer weight;
         private LocalDate activityStartDate;
         private LocalDate activityEndDate;
     }
