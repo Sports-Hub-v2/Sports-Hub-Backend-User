@@ -63,6 +63,13 @@ public class ProfileController {
                 .toList();
     }
 
+    // 관리자용 - 사용자 삭제
+    @DeleteMapping("/profiles/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id) {
+        profileService.delete(id);
+    }
+
     private Response toResponse(Profile p) {
         Response r = new Response();
         BeanUtils.copyProperties(p, r);

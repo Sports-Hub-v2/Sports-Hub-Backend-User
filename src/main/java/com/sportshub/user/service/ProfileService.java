@@ -54,4 +54,12 @@ public class ProfileService {
     public Page<Profile> findAll(Pageable pageable) {
         return profileRepository.findAll(pageable);
     }
+
+    @Transactional
+    public void delete(Long id) {
+        if (!profileRepository.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "profile not found");
+        }
+        profileRepository.deleteById(id);
+    }
 }
